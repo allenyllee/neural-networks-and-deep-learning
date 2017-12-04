@@ -33,8 +33,12 @@ class Network(object):
         self.sizes = sizes
         self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
         self.weights = [np.random.randn(y, x)
-                        for x, y in zip(sizes[:-1], sizes[1:])]
-
+                        for x, y in zip(sizes[:-1], sizes[1:])] # allen: we can see y as a number of neuron, 
+                                                                # x as a number of input for the neuron
+                                                                # so, the number of neuron of second layer is 3, 
+                                                                # and the number of input for every neuron of second layer is 2 
+                                                                # (because there are 2 neurons in first layer as inputs)
+                                                                # x, y = 2, 3
     def feedforward(self, a):
         """Return the output of the network if ``a`` is input."""
         for b, w in zip(self.biases, self.weights):
